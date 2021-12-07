@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">BreakFood</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textHome">Breakfood Hamburguesas</string>
+    <string name="textTittleComments">Deja un comentario</string>
+    <string name="btSaveComment">Guardar Comentario</string>
+    <string name="hintComment">Escribe tu comentario</string>
 </resources>
