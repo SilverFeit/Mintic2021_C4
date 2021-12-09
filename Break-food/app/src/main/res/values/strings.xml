@@ -6,4 +6,5 @@
     <string name="textTittleComments">Deja un comentario</string>
     <string name="btSaveComment">Guardar Comentario</string>
     <string name="hintComment">Escribe tu comentario</string>
+    <string name="textTitleAdmin">Mi perfil</string>
 </resources>
