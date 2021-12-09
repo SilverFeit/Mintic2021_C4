@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:apps="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.ui.fragments.AdminFragment">
+    tools:context=".view.ui.fragments.AdminFragment"
+    android:background="@color/background_grey">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,11 +22,13 @@
                 android:layout_height="wrap_content"
                 apps:cardCornerRadius="@dimen/cardCornerRadius"
                 apps:cardElevation="@dimen/cardElevation"
-                android:layout_margin="@dimen/defaultLayoutMargin">
+                android:layout_margin="@dimen/defaultLayoutMargin"
+                >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@color/background_grey">
 
                     <TextView
                         android:id="@+id/tvTitleAdmin"
@@ -40,6 +44,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/heightImageProduct"
                         android:src="@mipmap/ic_launcher"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/rounded_rectangle"
                         android:layout_margin="@dimen/defaultLayoutMargin"/>
 
                     <TextView
@@ -49,8 +55,11 @@
                         android:text="Nombre"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
-                        android:gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/defaultLayoutMargin" />
+                        android:background="@drawable/rounded_rectangle"
+                        android:layout_marginTop="@dimen/defaultLayoutMargin"
+                        android:layout_marginLeft="@dimen/defaultLayoutMargin"
+                        android:layout_marginRight="@dimen/defaultLayoutMargin"
+                        android:padding="15dp"/>
 
                     <TextView
                         android:id="@+id/tvAddressAdmin"
@@ -59,8 +68,11 @@
                         android:text="Dirección"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
-                        android:gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/defaultLayoutMargin" />
+                        android:background="@drawable/rounded_rectangle"
+                        android:layout_marginTop="@dimen/defaultLayoutMargin"
+                        android:layout_marginLeft="@dimen/defaultLayoutMargin"
+                        android:layout_marginRight="@dimen/defaultLayoutMargin"
+                        android:padding="15dp" />
 
                     <TextView
                         android:id="@+id/tvPhoneAdmin"
@@ -69,8 +81,11 @@
                         android:text="Teléfono"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
-                        android:gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/defaultLayoutMargin" />
+                        android:background="@drawable/rounded_rectangle"
+                        android:layout_marginTop="@dimen/defaultLayoutMargin"
+                        android:layout_marginLeft="@dimen/defaultLayoutMargin"
+                        android:layout_marginRight="@dimen/defaultLayoutMargin"
+                        android:padding="15dp" />
 
                     <TextView
                         android:id="@+id/tvMailAdmin"
@@ -79,9 +94,11 @@
                         android:text="Correo"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
-                        android:gravity="center_horizontal"
+                        android:background="@drawable/rounded_rectangle"
                         android:layout_marginTop="@dimen/defaultLayoutMargin"
-                        />
+                        android:layout_marginLeft="@dimen/defaultLayoutMargin"
+                        android:layout_marginRight="@dimen/defaultLayoutMargin"
+                        android:padding="15dp"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

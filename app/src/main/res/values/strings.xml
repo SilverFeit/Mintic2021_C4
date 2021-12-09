@@ -6,7 +6,7 @@
     <string name="textTittleComments">Deja un comentario</string>
     <string name="btSaveComment">Guardar Comentario</string>
     <string name="hintComment">Escribe tu comentario</string>
-    <string name="textTitleAdmin">Mi perfil</string>
+    <string name="textTitleAdmin">Mi Perfil</string>
     <string name="hintName">Nombre</string>
     <string name="hintAddress">Dirección</string>
     <string name="hintPhone">Teléfono</string>
