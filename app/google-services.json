@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "835704868968",
+    "project_id": "breakfood-mintic-2021c4",
+    "storage_bucket": "breakfood-mintic-2021c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835704868968:android:648c65d3998a96990babdd",
+        "android_client_info": {
+          "package_name": "com.misiontic2022.breakfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835704868968-nov3m3o6mqal033pf0eufcel64od9sds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa1t5gz1FkyXwSRlgfq8JtzzN55KH363g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835704868968-nov3m3o6mqal033pf0eufcel64od9sds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
