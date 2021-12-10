@@ -12,4 +12,7 @@
     <string name="hintMail">Email</string>
     <string name="btSaveAdmin">Guardar Cambios</string>
     <string name="btBuyProduct">Guardar Cambios</string>
+    <string name="textLogin">Inicio de sesión</string>
+    <string name="btnLogin">Iniciar Sesión</string>
+    <string name="btnSignup">Regístrate</string>
 </resources>

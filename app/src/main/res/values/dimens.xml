@@ -16,4 +16,5 @@
     <dimen name="itemCommentsUser">10dp</dimen>
     <dimen name="itemCommentsScore">10dp</dimen>
     <dimen name="itemCommentsComment">10dp</dimen>
+    <dimen name="textSizeSignup">16sp</dimen>
 </resources>
