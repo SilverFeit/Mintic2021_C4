@@ -13,4 +13,22 @@ abstract class BaseFirebaseDTO {
 
         return gson.fromJson(json, type)
     }
+
+    companion object {
+
+        fun <T: BaseFirebaseDTO> convertToDTO(objec :Any, classe : Class<T>) : T {
+            val gson = Gson()
+            val json = gson.toJson(objec)
+            return gson.fromJson(json , classe)
+        }
+
+        fun <T: BaseFirebaseDTO> convertToListDTO(objecs :List<Any>, classe : Class<T>) : List<T> {
+            val listResult = arrayListOf<T>()
+            for (currentObject in objecs) {
+                listResult.add(convertToDTO(currentObject, classe))
+            }
+            return listResult
+        }
+
+    }
 }

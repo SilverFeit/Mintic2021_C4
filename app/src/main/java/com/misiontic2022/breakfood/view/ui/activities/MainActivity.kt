@@ -22,6 +22,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Thread{
+            managementFirebaseFirestore.getAllElements(
+                collection = ManagementFirebaseFireStore.CollectionsAvailables.USERS,
+                classe = UserFirebaseDTO::class.java,
+                succes = {
+                    listUsers ->
+                    val currentList = listUsers as List<UserFirebaseDTO>
+                    Log.e("Error", "Ha llegado la consulta")
+                },
+                error = {
+                    Log.e("Error", "Fallo la consulta")
+                }
+            )
+            /*
             managementFirebaseFirestore.addElementTocollection(
                 collection = ManagementFirebaseFireStore.CollectionsAvailables.USERS,
                 element = UserFirebaseDTO(
@@ -36,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                     Log.e("Error", currentError)
                 }
             )
+            */
         }.start()
 
         binding = ActivityMainBinding.inflate(layoutInflater)

@@ -36,11 +36,39 @@ class ManagementFirebaseFireStore private  constructor() {
             }
     }
 
+    fun <T : BaseFirebaseDTO>getAllElements(
+        collection: CollectionsAvailables,
+        classe : Class<T>,
+        succes: ((List<T>)->Unit),
+        error: (String)->Unit
+    ) {
+        db
+            .collection(collection.getCollectionName())
+            .get()
+            .addOnSuccessListener {
+                result ->
+                val data = result.documents
+                val listElements = data
+                    .mapNotNull {
+                        it.data
+                    }
+                    .toList()
+                succes.invoke(BaseFirebaseDTO.convertToListDTO(listElements, classe = classe))
+            }
+            .addOnFailureListener {
+                error("Fallo la lectura de la coleccion")
+                Log.e("Error", "Surgio un error", it)
+            }
+    }
+
 
     /**
      * Private methods
      */
 
+    /**
+     * static
+     */
     companion object {
         private var instance : ManagementFirebaseFireStore? = null
 
@@ -53,7 +81,7 @@ class ManagementFirebaseFireStore private  constructor() {
     }
 
     enum class CollectionsAvailables (private val nameC : String){
-        USERS("Users");
+        USERS("USERS");
         fun getCollectionName() : String = nameC
     }
 }
