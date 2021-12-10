@@ -3,6 +3,7 @@ package com.misiontic2022.breakfood.view.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
@@ -10,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.misiontic2022.breakfood.R
 import com.misiontic2022.breakfood.databinding.ActivityMainBinding
 import com.misiontic2022.breakfood.view.ui.datasource.firebase.ManagementFirebaseFireStore
+import com.misiontic2022.breakfood.view.ui.datasource.firebase.ManagementLoginFirebase
 import com.misiontic2022.breakfood.view.ui.datasource.firebase.firebaseDTOs.UserFirebaseDTO
 
 class MainActivity : AppCompatActivity() {
@@ -17,11 +19,29 @@ class MainActivity : AppCompatActivity() {
     private lateinit var  binding: ActivityMainBinding
 
     private val managementFirebaseFirestore = ManagementFirebaseFireStore.getInstance()
+    private val managementLoginFirebase = ManagementLoginFirebase.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Thread{
+            managementLoginFirebase.createUserWithUserAndPassword(
+                activity = this,
+                email = "jj@jj.com",
+                password = "112233",
+                success = {
+                    runOnUiThread {
+                        Toast.makeText(this, "Me he registrado",Toast.LENGTH_LONG).show()
+                    }
+                },
+                error = {
+                    runOnUiThread {
+                        Toast.makeText(this, "Ya esta registrado",Toast.LENGTH_LONG).show()
+                    }
+                }
+            )
+            /*
+            //TODO : aqui leen una coleccion
             managementFirebaseFirestore.getAllElements(
                 collection = ManagementFirebaseFireStore.CollectionsAvailables.USERS,
                 classe = UserFirebaseDTO::class.java,
@@ -34,7 +54,9 @@ class MainActivity : AppCompatActivity() {
                     Log.e("Error", "Fallo la consulta")
                 }
             )
+            */
             /*
+            //TODo: aqui adicionan un elemento a una coleccion
             managementFirebaseFirestore.addElementTocollection(
                 collection = ManagementFirebaseFireStore.CollectionsAvailables.USERS,
                 element = UserFirebaseDTO(

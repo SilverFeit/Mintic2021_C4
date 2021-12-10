@@ -48,11 +48,11 @@
                         android:background="@drawable/rounded_rectangle"
                         android:layout_margin="@dimen/defaultLayoutMargin"/>
 
-                    <TextView
-                        android:id="@+id/tvNameAdmin"
+                    <EditText
+                        android:id="@+id/edNameAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nombre"
+                        android:text="email"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_rectangle"
@@ -62,10 +62,10 @@
                         android:padding="15dp"/>
 
                     <TextView
-                        android:id="@+id/tvAddressAdmin"
+                        android:id="@+id/edPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Dirección"
+                        android:text="Password"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_rectangle"
@@ -75,10 +75,10 @@
                         android:padding="15dp" />
 
                     <TextView
-                        android:id="@+id/tvPhoneAdmin"
+                        android:id="@+id/tvIniciarSesion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Teléfono"
+                        android:text="iniciar sesion"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_rectangle"
