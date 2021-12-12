@@ -7,6 +7,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.misiontic2022.breakfood.R
 import com.misiontic2022.breakfood.databinding.ActivitySplashScreenBinding
+import com.misiontic2022.breakfood.view.ui.activities.main.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val animation = AnimationUtils.loadAnimation( this, R.anim.animation)
         binding.ivSplashScreen.startAnimation(animation)
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
 
         animation.setAnimationListener(object: Animation.AnimationListener{
             override fun onAnimationStart(p0: Animation?) {

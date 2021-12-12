@@ -7,10 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.misiontic2022.breakfood.R
 import com.misiontic2022.breakfood.databinding.FragmentAdminBinding
-import com.misiontic2022.breakfood.view.ui.fragments.adminFragment.AdminFragmentViewModel
-import com.misiontic2022.breakfood.view.ui.fragments.adminFragment.AdminFragmentViewModelDelegate
+import com.misiontic2022.breakfood.view.ui.fragments.loginFragment.LoginFragmentViewModel
+import com.misiontic2022.breakfood.view.ui.fragments.loginFragment.LoginFragmentViewModelDelegate
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AdminFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AdminFragment : Fragment(), AdminFragmentViewModelDelegate {
+class AdminFragment : Fragment() {
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -30,7 +29,6 @@ class AdminFragment : Fragment(), AdminFragmentViewModelDelegate {
 
 
     private lateinit var binding : FragmentAdminBinding
-    private val viewModel = AdminFragmentViewModel(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,32 +43,11 @@ class AdminFragment : Fragment(), AdminFragmentViewModelDelegate {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAdminBinding.inflate(layoutInflater)
-        addListeners()
         // Inflate the layout for this fragment
         return binding.root
     }
 
-    private fun addListeners() {
-        binding.tvIniciarSesion.setOnClickListener {
-            viewModel.login(
-                activity = context as Activity,
-                email = binding.edNameAdmin.text.toString(),
-                passwor = binding.edPassword.text.toString()
-            )
-        }
-    }
 
-    override fun loginSuccess() {
-        binding.tvIniciarSesion.post {
-            Toast.makeText(context,"Me he logeado",Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun loginFailed() {
-        binding.tvIniciarSesion.post {
-            Toast.makeText(context,"Me he logeado",Toast.LENGTH_LONG).show()
-        }
-    }
 
 
     companion object {

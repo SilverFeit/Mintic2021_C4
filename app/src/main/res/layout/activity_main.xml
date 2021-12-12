@@ -19,13 +19,13 @@
             android:layout_above="@+id/bnvMenu"
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnvMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:menu="@menu/bnv_menu">
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+            app:menu="@menu/bnv_menu"/>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

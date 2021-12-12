@@ -1,16 +1,16 @@
-package com.misiontic2022.breakfood.view.ui.fragments.adminFragment
+package com.misiontic2022.breakfood.view.ui.fragments.loginFragment
 
 import android.app.Activity
 import com.misiontic2022.breakfood.view.ui.datasource.firebase.ManagementLoginFirebase
 
-interface AdminFragmentViewModelDelegate {
+interface LoginFragmentViewModelDelegate {
 
     fun loginSuccess()
     fun loginFailed()
 }
 
-class AdminFragmentViewModel constructor(
-    private val delegate : AdminFragmentViewModelDelegate
+class LoginFragmentViewModel constructor(
+    private val delegate : LoginFragmentViewModelDelegate
 ) {
 
     private val managementLoginFirebase = ManagementLoginFirebase.getInstance()

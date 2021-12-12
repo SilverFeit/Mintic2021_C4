@@ -66,7 +66,7 @@
         tools:layout="@layout/fragment_admin_detail_dialog"/>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.misiontic2022.breakfood.view.ui.fragments.LoginFragment"
+        android:name="com.misiontic2022.breakfood.view.ui.fragments.loginFragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
