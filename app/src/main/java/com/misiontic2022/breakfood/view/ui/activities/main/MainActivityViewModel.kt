@@ -1,6 +1,7 @@
 package com.misiontic2022.breakfood.view.ui.activities.main
 
 import androidx.appcompat.app.AppCompatActivity
+import com.misiontic2022.breakfood.R
 
 interface MainActivityViewModelDelegate {
 
@@ -41,9 +42,24 @@ class MainActivityViewModel constructor(
         }
     }
 
-    enum class FragmentsAvailables{
-        LOGIN,
-        OTHER,
+    enum class FragmentsAvailables (private val id : Int){
+        LOGIN(R.id.loginFragment),
+        OTHER(-1),
         ;
+        fun getCurrentFragment() = id
+
+        companion object {
+
+            fun findFragmentById(id : Int?) : FragmentsAvailables {
+                for(currentFragment in values()) {
+                    if (id != currentFragment.id) {
+                        continue
+                    }
+                    return currentFragment
+                }
+                return OTHER
+            }
+
+        }
     }
 }

@@ -26,7 +26,7 @@ class LoginFragment : Fragment(), LoginFragmentViewModelDelegate {
     private var param1: String? = null
     private var param2: String? = null
 
-    private val viewModel = LoginFragmentViewModel(this)
+    private lateinit var viewModel : LoginFragmentViewModel
     private lateinit var binding : FragmentLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +43,7 @@ class LoginFragment : Fragment(), LoginFragmentViewModelDelegate {
     ): View? {
         binding = FragmentLoginBinding.inflate(layoutInflater)
         addListeners()
+        viewModel = LoginFragmentViewModel(delegate = this, view = binding.root)
         return binding.root
     }
 
@@ -67,7 +68,15 @@ class LoginFragment : Fragment(), LoginFragmentViewModelDelegate {
     }
 
     private fun addListenerSignUp() {
-
+        binding.btnSignup.setOnClickListener {
+            viewModel.signUp(
+                activity = context as Activity,
+                email = binding.edNameAdmin.text.toString(),
+                passwor = binding.edPassword.text.toString(),
+                name = "vaca",
+                lastName = "lola"
+            )
+        }
     }
 
     /**
@@ -82,7 +91,19 @@ class LoginFragment : Fragment(), LoginFragmentViewModelDelegate {
 
     override fun loginFailed() {
         binding.btnLogin.post {
-            Toast.makeText(context,"Me he logeado", Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"Revisa tus credenciales", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun signUpSuccess() {
+        binding.btnLogin.post {
+            Toast.makeText(context,"Se ha registrado con exito", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun signUpFailed() {
+        binding.btnLogin.post {
+            Toast.makeText(context,"Revisa tus credenciales", Toast.LENGTH_LONG).show()
         }
     }
 

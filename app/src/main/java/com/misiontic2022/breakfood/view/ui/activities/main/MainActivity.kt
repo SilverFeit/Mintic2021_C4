@@ -16,18 +16,37 @@ class MainActivity : AppCompatActivity(), MainActivityViewModelDelegate {
     private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
 
     private lateinit var helperNavigationMainActivity: HelperNavigationMainActivity
+    private val viewModel = MainActivityViewModel(mainActivity = this, delegate = this)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        helperNavigationMainActivity = HelperNavigationMainActivity(supportFragmentManager)
+
+        helperNavigationMainActivity = HelperNavigationMainActivity(
+             supportFragmentManager = supportFragmentManager,
+            mainActivityViewModel = viewModel
+        )
+
         val view = binding.root
         setContentView(view)
         configNav()
-        configListenerCurrentNav()
     }
 
+    override fun onResume() {
+        super.onResume()
+        helperNavigationMainActivity.addListenerNavController()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        helperNavigationMainActivity.removeListenerNavController()
+    }
+
+
+    /**--------------------------------------------------
+    --------------------PRIVATE METHODS------------------
+    --------------------------------------------------*/
     fun configNav() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragContent) as NavHostFragment
@@ -35,19 +54,6 @@ class MainActivity : AppCompatActivity(), MainActivityViewModelDelegate {
         findViewById<BottomNavigationView>(R.id.bnvMenu).setupWithNavController(navController)
     }
 
-    /**--------------------------------------------------
-    --------------------PRIVATE METHODS------------------
-    --------------------------------------------------*/
-
-    private fun configListenerCurrentNav() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragContent) as NavHostFragment
-        val navController = navHostFragment.navController
-        val id = navController.currentDestination?.id
-        if (id == R.id.loginFragment) {
-
-        }
-    }
 
     /**--------------------------------------------------
     --------------------DELEGATE METHODS------------------
@@ -60,28 +66,25 @@ class MainActivity : AppCompatActivity(), MainActivityViewModelDelegate {
         binding.bnvMenu.visibility = View.GONE
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-}
-
-override fun onRequestPermissionsResult(
-    requestCode: Int,
-    permissions: Array<out String>,
-    grantResults: IntArray
-) {
-    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-    val permissionsToRequest = ArrayList<String>();
-    var i = 0;
-    while (i < grantResults.size) {
-        permissionsToRequest.add(permissions[i]);
-        i++;
+        val permissionsToRequest = ArrayList<String>();
+        var i = 0;
+        while (i < grantResults.size) {
+            permissionsToRequest.add(permissions[i]);
+            i++;
+        }
+        if (permissionsToRequest.size > 0) {
+            ActivityCompat.requestPermissions(
+                this,
+                permissionsToRequest.toTypedArray(),
+                REQUEST_PERMISSIONS_REQUEST_CODE
+            );
+        }
     }
-    if (permissionsToRequest.size > 0) {
-        ActivityCompat.requestPermissions(
-            this,
-            permissionsToRequest.toTypedArray(),
-            REQUEST_PERMISSIONS_REQUEST_CODE
-        );
-    }
-}
 }

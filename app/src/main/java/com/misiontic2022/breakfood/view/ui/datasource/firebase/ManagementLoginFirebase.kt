@@ -16,17 +16,26 @@ class ManagementLoginFirebase {
         success : ()->Unit,
         error : () ->Unit
     ) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(activity) {
-                    task ->
-                if (task.isSuccessful) {
-                    Log.d("Error", "createUserWithEmail:success")
-                    success.invoke()
-                    val user = auth.currentUser
-                } else {
-                    error.invoke()
+        if (isInvalidLoginAndPassword(email, password)) {
+            error.invoke()
+            return
+        }
+        try {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(activity) {
+                        task ->
+                    if (task.isSuccessful) {
+                        Log.d("Error", "createUserWithEmail:success")
+                        success.invoke()
+                        val user = auth.currentUser
+                    } else {
+                        error.invoke()
+                    }
                 }
-            }
+        } catch (e: Exception) {
+            Log.e("Error", "Surgio un error", e)
+            error.invoke()
+        }
     }
 
     fun signInWithUserAndPassword(
@@ -36,19 +45,33 @@ class ManagementLoginFirebase {
         success : (user: FirebaseUser?)->Unit,
         error : () ->Unit
     ) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(activity) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("Error", "signInWithEmail:success")
-                    val user = auth.currentUser
-                    success.invoke(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w("Error", "signInWithEmail:failure", task.exception)
-                    error.invoke()
+        if (isInvalidLoginAndPassword(email, password)) {
+            error.invoke()
+            return
+        }
+
+        try {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(activity) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d("Error", "signInWithEmail:success")
+                        val user = auth.currentUser
+                        success.invoke(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w("Error", "signInWithEmail:failure", task.exception)
+                        error.invoke()
+                    }
                 }
-            }
+        } catch (e: Exception) {
+            Log.e("Error", "Fallo", e)
+            error.invoke()
+        }
+    }
+
+    private fun isInvalidLoginAndPassword(email: String, password: String) : Boolean {
+        return email.isNullOrEmpty() || password.isNullOrEmpty()
     }
 
 
