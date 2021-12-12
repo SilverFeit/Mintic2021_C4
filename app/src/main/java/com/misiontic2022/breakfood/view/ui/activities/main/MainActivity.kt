@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), MainActivityViewModelDelegate {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         helperNavigationMainActivity = HelperNavigationMainActivity(
-             supportFragmentManager = supportFragmentManager,
+            supportFragmentManager = supportFragmentManager,
             mainActivityViewModel = viewModel
         )
 

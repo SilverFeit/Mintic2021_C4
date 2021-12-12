@@ -44,6 +44,7 @@ class MainActivityViewModel constructor(
 
     enum class FragmentsAvailables (private val id : Int){
         LOGIN(R.id.loginFragment),
+        HOME(R.id.homeFragment),
         OTHER(-1),
         ;
         fun getCurrentFragment() = id

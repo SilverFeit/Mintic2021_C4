@@ -51,9 +51,7 @@ class LoginFragmentViewModel constructor(
             success = {
                 registerInFirestore(
                     email = email,
-                    passwor = passwor,
                     name = name,
-                    lastName = lastName,
                     success = {
                         startOnMainThread(delegate::signUpSuccess)
                     },
@@ -90,15 +88,15 @@ class LoginFragmentViewModel constructor(
 
     private fun registerInFirestore(
         email: String,
-        passwor: String,
         name: String,
-        lastName: String,
         success: () -> Unit,
         error: () -> Unit
     ){
         Thread{
+            val id = managementLoginFirebase.getCurrentfirebaseUser()?.uid?:""
             managementFirebaseFireStore.addElementTocollection(
                 collection = ManagementFirebaseFireStore.CollectionsAvailables.USERS,
+                id = id,
                 success = {
                     success.invoke()
                 },
@@ -107,7 +105,6 @@ class LoginFragmentViewModel constructor(
                 },
                 element = UserFirebaseDTO(
                     name = name,
-                    lastName = lastName,
                     email = email
                 )
             )
@@ -115,8 +112,9 @@ class LoginFragmentViewModel constructor(
     }
 
     private fun startOnMainThread(function : () ->Unit){
-
-
+        view.post {
+            function.invoke()
+        }
     }
 
 }

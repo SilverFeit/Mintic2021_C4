@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import com.misiontic2022.breakfood.R
 import com.misiontic2022.breakfood.databinding.FragmentLoginBinding
+import com.misiontic2022.breakfood.view.ui.activities.main.MainActivityViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,8 +75,8 @@ class LoginFragment : Fragment(), LoginFragmentViewModelDelegate {
                 activity = context as Activity,
                 email = binding.edNameAdmin.text.toString(),
                 passwor = binding.edPassword.text.toString(),
-                name = "vaca",
-                lastName = "lola"
+                name = " ",
+                lastName = " "
             )
         }
     }
@@ -83,29 +85,13 @@ class LoginFragment : Fragment(), LoginFragmentViewModelDelegate {
      * Delegates
      */
 
-    override fun loginSuccess() {
-        binding.btnLogin.post {
-            Toast.makeText(context,"Me he logeado", Toast.LENGTH_LONG).show()
-        }
-    }
+    override fun loginSuccess() = Navigation.findNavController(binding.root).navigate(MainActivityViewModel.FragmentsAvailables.HOME.getCurrentFragment())
 
-    override fun loginFailed() {
-        binding.btnLogin.post {
-            Toast.makeText(context,"Revisa tus credenciales", Toast.LENGTH_LONG).show()
-        }
-    }
+    override fun loginFailed() = Toast.makeText(context,"Revisa tus credenciales", Toast.LENGTH_LONG).show()
 
-    override fun signUpSuccess() {
-        binding.btnLogin.post {
-            Toast.makeText(context,"Se ha registrado con exito", Toast.LENGTH_LONG).show()
-        }
-    }
+    override fun signUpSuccess() = Toast.makeText(context,"Se ha registrado con exito", Toast.LENGTH_LONG).show()
 
-    override fun signUpFailed() {
-        binding.btnLogin.post {
-            Toast.makeText(context,"Revisa tus credenciales", Toast.LENGTH_LONG).show()
-        }
-    }
+    override fun signUpFailed() = Toast.makeText(context,"El usuario ya existe", Toast.LENGTH_LONG).show()
 
 
     companion object {
