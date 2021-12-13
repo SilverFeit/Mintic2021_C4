@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
-        android:name="com.misiontic2022.breakfood.view.ui.fragments.AdminFragment"
+        android:name="com.misiontic2022.breakfood.view.ui.fragments.admin.AdminFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" >
         <action

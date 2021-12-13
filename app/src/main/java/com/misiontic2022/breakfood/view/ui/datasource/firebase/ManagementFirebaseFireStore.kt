@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 import com.misiontic2022.breakfood.view.ui.datasource.firebase.firebaseDTOs.BaseFirebaseDTO
 
 class ManagementFirebaseFireStore private  constructor() {
@@ -20,18 +21,42 @@ class ManagementFirebaseFireStore private  constructor() {
     // durante la insercion del documento
     fun <T: BaseFirebaseDTO> addElementTocollection(
         collection : CollectionsAvailables,
+        id : String,
         element : T ,
         success: ((T)-> Unit),
         error: ((String)-> Unit),
     ) {
         db
             .collection(collection.name)
-            .add(element.convertToHashMap())
+            .document(id)
+            .set(element.convertToHashMap())
             .addOnSuccessListener {
                 success.invoke(element)
             }
             .addOnFailureListener {
                 error("Fallo la insercion del elemento")
+                Log.e("Error", "Surgio un error", it)
+            }
+    }
+
+
+    fun <T : BaseFirebaseDTO>getElement(
+        collection: CollectionsAvailables,
+        id : String,
+        classe : Class<T>,
+        succes: ((T)->Unit),
+        error: (String)->Unit
+    ) {
+        db
+            .collection(collection.getCollectionName())
+            .document(id)
+            .get()
+            .addOnSuccessListener {
+                result ->
+                succes.invoke(BaseFirebaseDTO.convertToDTOFromJson(json = Gson().toJson(result.data), classe = classe))
+            }
+            .addOnFailureListener {
+                error("Fallo la lectura de la coleccion")
                 Log.e("Error", "Surgio un error", it)
             }
     }

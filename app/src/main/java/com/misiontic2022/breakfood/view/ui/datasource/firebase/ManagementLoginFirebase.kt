@@ -5,9 +5,12 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
-class ManagementLoginFirebase {
+class ManagementLoginFirebase private constructor() {
 
     private val auth = FirebaseAuth.getInstance()
+    private var firebaseUSer : FirebaseUser? = null
+
+    fun getCurrentfirebaseUser() = firebaseUSer
 
     fun createUserWithUserAndPassword(
         activity: Activity,
@@ -27,7 +30,7 @@ class ManagementLoginFirebase {
                     if (task.isSuccessful) {
                         Log.d("Error", "createUserWithEmail:success")
                         success.invoke()
-                        val user = auth.currentUser
+                        firebaseUSer = auth.currentUser
                     } else {
                         error.invoke()
                     }
@@ -57,6 +60,7 @@ class ManagementLoginFirebase {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("Error", "signInWithEmail:success")
                         val user = auth.currentUser
+                        firebaseUSer = user
                         success.invoke(user)
                     } else {
                         // If sign in fails, display a message to the user.

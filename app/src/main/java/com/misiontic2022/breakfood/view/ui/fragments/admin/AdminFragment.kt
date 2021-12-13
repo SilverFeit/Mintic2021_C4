@@ -1,4 +1,4 @@
-package com.misiontic2022.breakfood.view.ui.fragments
+package com.misiontic2022.breakfood.view.ui.fragments.admin
 
 import android.app.Activity
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.misiontic2022.breakfood.databinding.FragmentAdminBinding
+import com.misiontic2022.breakfood.view.ui.datasource.firebase.firebaseDTOs.UserFirebaseDTO
 import com.misiontic2022.breakfood.view.ui.fragments.loginFragment.LoginFragmentViewModel
 import com.misiontic2022.breakfood.view.ui.fragments.loginFragment.LoginFragmentViewModelDelegate
 
@@ -21,7 +22,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AdminFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AdminFragment : Fragment() {
+class AdminFragment : Fragment(), AdminFragmentViewModelDelegate {
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -29,6 +30,7 @@ class AdminFragment : Fragment() {
 
 
     private lateinit var binding : FragmentAdminBinding
+    private lateinit var viewModel : AdminFragmentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,11 +45,19 @@ class AdminFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAdminBinding.inflate(layoutInflater)
+        viewModel = AdminFragmentViewModel(delegate = this, view = binding.root)
+        viewModel.loadDetailUser()
         // Inflate the layout for this fragment
         return binding.root
     }
 
+    override fun updateUser(user: UserFirebaseDTO) {
+        binding.edNameAdmin.setText(user.name)
+    }
 
+    override fun showError(errod: String) {
+        Toast.makeText(context, "Surguio un problema al cargar la data", Toast.LENGTH_LONG).show()
+    }
 
 
     companion object {
@@ -69,4 +79,6 @@ class AdminFragment : Fragment() {
                 }
             }
     }
+
+
 }
