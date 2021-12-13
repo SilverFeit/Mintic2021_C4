@@ -106,7 +106,9 @@ class ManagementFirebaseFireStore private  constructor() {
     }
 
     enum class CollectionsAvailables (private val nameC : String){
-        USERS("USERS");
+        USERS("USERS"),
+        PRODUCTS("PRODUCTS"),
+        GLOBAL_VARIABLES("GLOBAL_VARIABLES");
         fun getCollectionName() : String = nameC
     }
 }

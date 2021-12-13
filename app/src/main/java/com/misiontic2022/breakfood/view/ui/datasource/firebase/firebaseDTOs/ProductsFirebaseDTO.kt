@@ -1,11 +1,12 @@
 package com.misiontic2022.breakfood.view.ui.datasource.firebase.firebaseDTOs
 
-data class ProductsFirebaseDTO (
-    var description : String = "",
-    var name : String = "",
-    var price : String = "",
-    var stock : String = "",
-    var url : String = "",
+import com.google.gson.annotations.SerializedName
 
+data class ProductsFirebaseDTO(
+    @SerializedName("DESCRIPTION") var description: String = "",
+    @SerializedName("NAME") var name: String = "",
+    @SerializedName("PRICE") var price: String = "",
+    @SerializedName("STOCK") var stock: String = "",
+    @SerializedName("URL") var url: String = "",
 
-) : BaseFirebaseDTO()
+    ) : BaseFirebaseDTO()

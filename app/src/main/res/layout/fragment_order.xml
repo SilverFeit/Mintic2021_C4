@@ -20,10 +20,11 @@
             android:layout_height="match_parent"
             android:background="@color/design_default_color_primary"
             android:alpha="0.3"/>
+
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
 </FrameLayout>
