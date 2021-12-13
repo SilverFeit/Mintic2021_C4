@@ -8,7 +8,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvOrder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_product"/>
     <RelativeLayout
         android:id="@+id/rlBaseOrder"
         android:layout_width="match_parent"
