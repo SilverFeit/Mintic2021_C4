@@ -7,7 +7,8 @@
     <string name="hintComment">Escribe tu comentario</string>
     <string name="textTitleAdmin">Mi Perfil</string>
     <string name="hintName">Nombre</string>
-    <string name="hintAddress">Dirección</string>
+    <string name="hintAddress1">Dirección 1</string>
+    <string name="hintAddress2">Dirección 2</string>
     <string name="hintPhone">Teléfono</string>
     <string name="hintMail">Email</string>
     <string name="btSaveAdmin">Guardar Cambios</string>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.fragments.AdminDetailDialogFragment"
+    tools:context=".view.ui.fragments.adminDialog.AdminDetailDialogFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -56,7 +56,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/defaultLayoutMargin"
-                            android:hint="@string/hintAddress"
+                            android:hint="@string/hintAddress1"
+                            android:inputType="textMultiLine"
+                            android:gravity="center_horizontal"/>
+                        <EditText
+                            android:id="@+id/etAddress2Admin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/defaultLayoutMargin"
+                            android:hint="@string/hintAddress2"
                             android:inputType="textMultiLine"
                             android:gravity="center_horizontal"/>
                         <EditText
@@ -65,16 +73,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/defaultLayoutMargin"
                             android:hint="@string/hintPhone"
-                            android:inputType="textMultiLine"
+                            android:inputType="phone"
                             android:gravity="center_horizontal"/>
-                        <EditText
-                            android:id="@+id/etMailAdmin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/defaultLayoutMargin"
-                            android:hint="@string/hintMail"
-                            android:inputType="textMultiLine"
-                            android:gravity="center_horizontal"/>
+
                         <Button
                             android:id="@+id/btSaveAdmin"
                             android:layout_width="wrap_content"
