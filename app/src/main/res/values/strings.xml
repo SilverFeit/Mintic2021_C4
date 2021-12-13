@@ -15,4 +15,5 @@
     <string name="textLogin">Inicio de sesión</string>
     <string name="btnLogin">Iniciar Sesión</string>
     <string name="btnSignup">Regístrate</string>
+    <string name="btnModificar">Editar</string>
 </resources>

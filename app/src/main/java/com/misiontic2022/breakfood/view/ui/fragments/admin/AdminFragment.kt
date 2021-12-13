@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.misiontic2022.breakfood.R
 import com.misiontic2022.breakfood.databinding.FragmentAdminBinding
 import com.misiontic2022.breakfood.view.ui.datasource.firebase.firebaseDTOs.UserFirebaseDTO
 import com.misiontic2022.breakfood.view.ui.fragments.loginFragment.LoginFragmentViewModel
@@ -51,8 +54,19 @@ class AdminFragment : Fragment(), AdminFragmentViewModelDelegate {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val button = view.findViewById<Button>(R.id.navigate_edition)
+        button?.setOnClickListener {
+            findNavController().navigate(R.id.adminDetailFragmentDialog, null)
+        }
+    }
+
     override fun updateUser(user: UserFirebaseDTO) {
-        binding.edNameAdmin.setText(user.name)
+        binding.tvNameAdmin.setText(user.name)
+        binding.tvDir1Admin.setText(user.dir1)
+        binding.tvDir2Admin.setText(user.dir2)
+        binding.tvNumAdmin.setText(user.tel)
     }
 
     override fun showError(errod: String) {

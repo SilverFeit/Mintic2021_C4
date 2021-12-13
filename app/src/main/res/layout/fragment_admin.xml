@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:apps="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.ui.fragments.AdminFragment"
+    tools:context=".view.ui.fragments.admin.AdminFragment"
     android:background="@color/background_grey">
 
 
@@ -48,11 +49,11 @@
                         android:background="@drawable/rounded_rectangle"
                         android:layout_margin="@dimen/defaultLayoutMargin"/>
 
-                    <EditText
-                        android:id="@+id/edNameAdmin"
+                    <TextView
+                        android:id="@+id/tvNameAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="email"
+                        android:text="Nombre"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_rectangle"
@@ -62,10 +63,10 @@
                         android:padding="15dp"/>
 
                     <TextView
-                        android:id="@+id/edPassword"
+                        android:id="@+id/tvDir1Admin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Password"
+                        android:text="Direccion 1"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_rectangle"
@@ -75,10 +76,10 @@
                         android:padding="15dp" />
 
                     <TextView
-                        android:id="@+id/tvIniciarSesion"
+                        android:id="@+id/tvDir2Admin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="iniciar sesion"
+                        android:text="Dirección 2"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_rectangle"
@@ -88,10 +89,10 @@
                         android:padding="15dp" />
 
                     <TextView
-                        android:id="@+id/tvMailAdmin"
+                        android:id="@+id/tvNumAdmin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Correo"
+                        android:text="Teléfono"
                         android:textSize="@dimen/textSizeAdmin"
                         android:textColor="@color/black"
                         android:background="@drawable/rounded_rectangle"
@@ -99,6 +100,23 @@
                         android:layout_marginLeft="@dimen/defaultLayoutMargin"
                         android:layout_marginRight="@dimen/defaultLayoutMargin"
                         android:padding="15dp"/>
+
+                    <Button
+                        android:id="@+id/navigate_edition"
+                        app:layout_constraintBottom_toTopOf="@+id/navigate_action_button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text"
+                        app:layout_constraintVertical_bias="0.594"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/rounded_corner"
+                        android:text="@string/btnModificar" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
